@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1478894752 source:c:\users\phenk\codeblocks\betriebssysteme_charhandling\main.c
+	<stdio.h>
+	<stdlib.h>
+
