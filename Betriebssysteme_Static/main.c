@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int overflow(int);
+
 int main()
 {
 

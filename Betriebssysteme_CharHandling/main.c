@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void convert(char[]);
+
 int main()
 {
     char input[255];
@@ -12,9 +14,7 @@ int main()
 void convert(char input[]){
     int offset = 'a'-'A';
 
-    char buffer[255];
     int i=0;
-    int a=0;
     int save = 0;
     unsigned int bool=0b1;
     while(input[i] != '\0'){
@@ -25,7 +25,7 @@ void convert(char input[]){
             else{
                 save=++i;
                 if('\0'==input[i])
-                    continue;
+                    break;
             }
             bool=~bool&0b1;
         }
