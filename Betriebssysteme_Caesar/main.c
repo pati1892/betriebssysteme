@@ -10,11 +10,13 @@ int main()
     int i = 0;
     while(input[i] != '\0'){
         input[i] += shift;
-        if(input[i] > 'z' || input[i] > 'Z' && input[i] < 'a'){
+        if(input[i] > 'z' || (input[i] > 'Z' && input[i] < 'a')){
             input[i] -= 26;
         }
         ++i;
     }
 
     printf("%s", input);
+    return 0;
+
 }
