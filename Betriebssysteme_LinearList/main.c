@@ -3,7 +3,7 @@
 
 struct element{
     int value;
-    struct element *next;
+	struct element *next;
 }typedef Element;
 
 struct list{
@@ -54,6 +54,27 @@ void insertTail(List *list, int value){
 	head->next->next = NULL;
 	head->next->value = value;
 	
+}
+
+void insertAscending(List *list, int value){
+	Element *head = list->element;
+	Element *element = (Element *)malloc(sizeof(Element));
+	element->value = value;
+	if(head->value > value){
+		list->element = element;
+		element->next = head;	
+	}
+	else{
+		while(head != NULL){
+		if(head->next == NULL || head->next->value > value){
+			Element *next = head->next;
+			head->next = element;
+			element->next = next;
+			break;
+		}
+		head = head->next;
+	}
+}
 }
 
 int listSize(const List *list){
@@ -110,18 +131,23 @@ int main(){
     printElement(head);*/
 	List list;
 	list.element=(Element*)malloc(sizeof(Element));
-	list.element->value=1;
+	list.element->value=1000;
 	list.element->next = NULL;
 	
-	insert(&list, 2);
-	insert(&list, 3);
-	insert(&list, 4);
-	insert(&list, 5);
-	insertTail(&list, 6);
+	insertAscending(&list, 3);
+	insertAscending(&list, 2);
+	insertAscending(&list, 6);
+	insertAscending(&list, 4);
+	insertAscending(&list, 6);
+insertAscending(&list, 10);
+insertAscending(&list, 100);
+insertAscending(&list, 10);
+		insertAscending(&list, 0);
 	printList(&list);
 	printf("Listsize: %d\n", listSize(&list));
 	printf("Contains 6: %d\n", contains(&list, 6));
 	printf("Contains 10: %d\n", contains(&list, 10));
 	freeList(&list);
+
 }
 
